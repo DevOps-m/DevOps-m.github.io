@@ -28,7 +28,7 @@ menu:
 cover:
   showPrevNext: true # 是否显示左右切换按钮. Whether to display the left and right toggle buttons.
   showIndicators: true # 是否显示指示器. # Whether to display the indicators
-  autoLoop: true # 是否自动轮播. Whether it is automatically rotated.
+  autoLoop: false # 是否自动轮播. Whether it is automatically rotated.
   duration: 120 # 切换延迟时间. Switching delay time.
   intervalTime: 5000 # 自动切换下一张的间隔时间. Automatically switch the interval of the next one.
 
@@ -208,9 +208,9 @@ mySkills:
 myGallery:
   enable: false
   data:
-    - /medias/featureimages/2.jpg
-    - /medias/featureimages/5.jpg
-    - /medias/featureimages/6.jpg
+    - /medias/featureimages/26.jpg
+    - /medias/featureimages/27.jpg
+    - /medias/featureimages/31.jpg
 
 # Whether to display post-calender in the `archive` page
 # 设置在归档页面中是否显示'文章日历'控件
@@ -329,7 +329,6 @@ libs:
 # The post featured images that needs to be displayed when there is no image.
 # 无文章特色图片时需要显示的文章特色图片.
 featureImages: 
-- /medias/featureimages/12.jpg
 - /medias/featureimages/26.jpg
 - /medias/featureimages/27.jpg
 - /medias/featureimages/31.jpg
@@ -345,6 +344,7 @@ featureImages:
 #- /medias/featureimages/9.jpg
 #- /medias/featureimages/10.jpg
 #- /medias/featureimages/11.jpg
+#- /medias/featureimages/12.jpg
 #- /medias/featureimages/13.jpg
 #- /medias/featureimages/14.jpg
 #- /medias/featureimages/15.jpg
