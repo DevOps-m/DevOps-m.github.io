@@ -26,9 +26,9 @@ menu:
 # Index cover carousel configuration.
 # 首页封面轮播图的相关配置.
 cover:
-  showPrevNext: false # 是否显示左右切换按钮. Whether to display the left and right toggle buttons.
-  showIndicators: false # 是否显示指示器. # Whether to display the indicators
-  autoLoop: false # 是否自动轮播. Whether it is automatically rotated.
+  showPrevNext: true # 是否显示左右切换按钮. Whether to display the left and right toggle buttons.
+  showIndicators: true # 是否显示指示器. # Whether to display the indicators
+  autoLoop: true # 是否自动轮播. Whether it is automatically rotated.
   duration: 120 # 切换延迟时间. Switching delay time.
   intervalTime: 5000 # 自动切换下一张的间隔时间. Automatically switch the interval of the next one.
 
@@ -397,7 +397,7 @@ tidio:
  
 #背景canvas-nest
 canvas_nest:
-  enable: false
+  enable: true
   color: 0,0,255 # 线条颜色, 默认: '0,0,0' ；三个数字分别为(R,G,B)，注意用,分割
   pointColor: 0,0,255 # 交点颜色, 默认: '0,0,0' ；三个数字分别为(R,G,B)，注意用,分割
   opacity: 0.7 # 线条透明度（0~1）, 默认: 0.5
@@ -406,11 +406,11 @@ canvas_nest:
 
 # 背景静止彩带.
 ribbon:
-  enable: false
+  enable: true
   size: 150 # 彩带大小, 默认: 90.
   alpha: 0.6 # 彩带透明度 (0 ~ 1), 默认: 0.6.
   zIndex: -1 # 背景的z-index属性，css属性用于控制所在层的位置, 默认: -1.
-  click_to_change: false  # 设置是否每次点击都更换彩带.
+  click_to_change: true  # 设置是否每次点击都更换彩带.
 
 # 背景动态彩带.
 ribbon_dynamic:
