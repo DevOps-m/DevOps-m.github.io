@@ -35,16 +35,16 @@ cover:
 # index page dream text,
 # 配置首页显示"梦想"的语句.
 dream:
-  enable: false
-  showTitle: false
+  enable: true
+  showTitle: true
   title: 神秘嘉宾
   text: 我搬到谁的隔壁，谁成了我的邻居。鸣谢生命有你参与，笑纳我的邀请。
 
 # Whether to display the musics.
 # 是否在首页显示音乐.
 music:
-  enable: false
-  showTitle: false
+  enable: true
+  showTitle: true
   title: 听听音乐
   fixed: false # 开启吸底模式
   autoplay: false # 是否自动播放
