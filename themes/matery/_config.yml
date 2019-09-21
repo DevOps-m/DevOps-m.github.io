@@ -37,8 +37,8 @@ cover:
 dream:
   enable: true
   showTitle: true
-  title: 神秘嘉宾
-  text: 我搬到谁的隔壁，谁成了我的邻居。鸣谢生命有你参与，笑纳我的邀请。
+  title: 人生格言
+  text: 人生没有白走的路，每一步都会算数。
 
 # Whether to display the musics.
 # 是否在首页显示音乐.
@@ -95,8 +95,8 @@ indexbtn:
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
-  github: https://github.com/DevOps-m
-  email: 1005437573@qq.com
+  github: 
+  email: 
   facebook: 
   twitter: 
   qq: 
@@ -139,7 +139,7 @@ copyright:
 # 是否激活mathjax数学公式，这是全局配置，但文章仍然不会都开启mathjax渲染，
 # 考虑到mathjax加载比较耗时，你还需要在需要渲染的文章的Front-matter中再加上`mathjax: true`才行.
 mathjax:
-  enable: false
+  enable: true
   cdn: https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 # Post word count, reading duration, site total word count.
