@@ -460,7 +460,7 @@ PS：这里不介绍部署NFS网络共享文件系统内容。
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    382
+                    383
                 </div>
                 
 
@@ -503,32 +503,20 @@ PS：这里不介绍部署NFS网络共享文件系统内容。
 <h4 id="部署过程："><a href="#部署过程：" class="headerlink" title="部署过程："></a>部署过程：</h4><blockquote>
 <p>参考文献：<a href="https://www.linuxtechi.com/automount-nfs-share-in-linux-using-autofs/" target="_blank" rel="noopener">https://www.linuxtechi.com/automount-nfs-share-in-linux-using-autofs/</a></p>
 </blockquote>
-<ol>
-<li><p>安装autofs软件：</p>
-<pre><code>root@linux:~# yum install -y autofs</code></pre></li>
-<li><p>向/etc/auto.master内增加内容：</p>
-<pre><code>root@linux:~# echo &quot;/ /etc/auto.fs&quot; &gt;&gt; /etc/auto.master</code></pre></li>
-<li><p>创建/etc/auto.fs，如存在则直接添加以下内容即可：</p>
-<pre><code>mnt -fstype=nfs,vers=4,minorversion=0,noatime,nodiratime,nosuid,noexec,nodev,ro,bg,soft,_netdev nfs.linux.com:/data/renderdata</code></pre></li>
-<li><p>将autofs服务设置开机自启并启动：</p>
-<pre><code>root@linux:~# systemctl enable autofs.service
+<h5 id="1-安装autofs软件："><a href="#1-安装autofs软件：" class="headerlink" title="1. 安装autofs软件："></a>1. 安装autofs软件：</h5><pre><code>root@linux:~# yum install -y autofs</code></pre><h5 id="2-向-etc-auto-master内增加内容："><a href="#2-向-etc-auto-master内增加内容：" class="headerlink" title="2. 向/etc/auto.master内增加内容："></a>2. 向/etc/auto.master内增加内容：</h5><pre><code>root@linux:~# echo &quot;/ /etc/auto.fs&quot; &gt;&gt; /etc/auto.master</code></pre><h5 id="3-创建-etc-auto-fs，如存在则直接添加以下内容即可："><a href="#3-创建-etc-auto-fs，如存在则直接添加以下内容即可：" class="headerlink" title="3. 创建/etc/auto.fs，如存在则直接添加以下内容即可："></a>3. 创建/etc/auto.fs，如存在则直接添加以下内容即可：</h5><pre><code>mnt -fstype=nfs,vers=4,minorversion=0,noatime,nodiratime,nosuid,noexec,nodev,ro,bg,soft,_netdev nfs.linux.com:/data/renderdata</code></pre><h5 id="4-将autofs服务设置开机自启并启动："><a href="#4-将autofs服务设置开机自启并启动：" class="headerlink" title="4. 将autofs服务设置开机自启并启动："></a>4. 将autofs服务设置开机自启并启动：</h5><pre><code>root@linux:~# systemctl enable autofs.service
 root@linux:~# systemctl start autofs.service
-root@linux:~# systemctl status autofs.service</code></pre></li>
-<li><p>测试autofs部署情况：</p>
-<pre><code>ops@linux:~$ df -h
-Filesystem             Size  Used Avail Use% Mounted on
-/dev/mapper/vg01-root  200G  4.0G  196G   2% /
-devtmpfs                63G     0   63G   0% /dev
-tmpfs                   63G     0   63G   0% /dev/shm
-tmpfs                   63G   11M   63G   1% /run
-tmpfs                   63G     0   63G   0% /sys/fs/cgroup
-/dev/sda2              497M  132M  365M  27% /boot
-/dev/sda1              500M   12M  489M   3% /boot/efi
-/dev/mapper/vg01-data  3.1T   38M  3.1T   1% /data
-tmpfs                   13G     0   13G   0% /run/user/1000
-ops@linux:~$</code></pre></li>
-</ol>
-<pre><code>ops@linux:~$ ls /mnt/
+root@linux:~# systemctl status autofs.service</code></pre><h5 id="5-测试autofs部署情况："><a href="#5-测试autofs部署情况：" class="headerlink" title="5. 测试autofs部署情况："></a>5. 测试autofs部署情况：</h5><pre><code>ops@linux:~$ df -h
+Filesystem                          Size  Used Avail Use% Mounted on
+/dev/mapper/vg01-root               200G  4.0G  196G   2% /
+devtmpfs                             63G     0   63G   0% /dev
+tmpfs                                63G     0   63G   0% /dev/shm
+tmpfs                                63G   11M   63G   1% /run
+tmpfs                                63G     0   63G   0% /sys/fs/cgroup
+/dev/sda2                           497M  132M  365M  27% /boot
+/dev/sda1                           500M   12M  489M   3% /boot/efi
+/dev/mapper/vg01-data               3.1T   38M  3.1T   1% /data
+tmpfs                                13G     0   13G   0% /run/user/1000
+ops@linux:~$</code></pre><pre><code>ops@linux:~$ ls /mnt/
 exportgeometry  modelvrscene  renderingvrscene  scripts
 ops@linux:~$ </code></pre><pre><code>ops@linux:~$ df -h
 Filesystem                          Size  Used Avail Use% Mounted on
@@ -899,7 +887,7 @@ PS：这里不介绍部署NFS网络共享文件系统内容。
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">382</span>
+            <span class="white-color">383</span>
             
 
             <br>
