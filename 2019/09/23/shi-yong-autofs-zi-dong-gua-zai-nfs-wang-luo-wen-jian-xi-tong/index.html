@@ -460,7 +460,7 @@ PS：这里不介绍部署NFS网络共享文件系统内容。
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    374
+                    382
                 </div>
                 
 
@@ -526,12 +526,23 @@ tmpfs                   63G     0   63G   0% /sys/fs/cgroup
 /dev/sda1              500M   12M  489M   3% /boot/efi
 /dev/mapper/vg01-data  3.1T   38M  3.1T   1% /data
 tmpfs                   13G     0   13G   0% /run/user/1000
-ops@linux:~$
-</code></pre></li>
+ops@linux:~$</code></pre></li>
 </ol>
-<p>ops@linux:<del>$ ls /mnt/<br>exportgeometry  modelvrscene  renderingvrscene  scripts<br>ops@linux:</del>$ </p>
-<p>ops@linux:<del>$ df -h<br>Filesystem                          Size  Used Avail Use% Mounted on<br>/dev/mapper/vg01-root               200G  4.0G  196G   2% /<br>devtmpfs                             63G     0   63G   0% /dev<br>tmpfs                                63G     0   63G   0% /dev/shm<br>tmpfs                                63G   11M   63G   1% /run<br>tmpfs                                63G     0   63G   0% /sys/fs/cgroup<br>nfs.linux.com:/data/renderdata        4.0T  1.2T  2.9T  29% /mnt<br>/dev/sda2                           497M  132M  365M  27% /boot<br>/dev/sda1                           500M   12M  489M   3% /boot/efi<br>/dev/mapper/vg01-data               3.1T   38M  3.1T   1% /data<br>tmpfs                                13G     0   13G   0% /run/user/1000<br>ops@linux:</del>$<br>```</p>
-<blockquote>
+<pre><code>ops@linux:~$ ls /mnt/
+exportgeometry  modelvrscene  renderingvrscene  scripts
+ops@linux:~$ </code></pre><pre><code>ops@linux:~$ df -h
+Filesystem                          Size  Used Avail Use% Mounted on
+/dev/mapper/vg01-root               200G  4.0G  196G   2% /
+devtmpfs                             63G     0   63G   0% /dev
+tmpfs                                63G     0   63G   0% /dev/shm
+tmpfs                                63G   11M   63G   1% /run
+tmpfs                                63G     0   63G   0% /sys/fs/cgroup
+nfs.linux.com:/data/renderdata        4.0T  1.2T  2.9T  29% /mnt
+/dev/sda2                           497M  132M  365M  27% /boot
+/dev/sda1                           500M   12M  489M   3% /boot/efi
+/dev/mapper/vg01-data               3.1T   38M  3.1T   1% /data
+tmpfs                                13G     0   13G   0% /run/user/1000
+ops@linux:~$</code></pre><blockquote>
 <p>PS：可以看到测试过程如上所示。</p>
 </blockquote>
 
@@ -888,7 +899,7 @@ PS：这里不介绍部署NFS网络共享文件系统内容。
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">374</span>
+            <span class="white-color">382</span>
             
 
             <br>
