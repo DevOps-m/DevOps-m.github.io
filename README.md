@@ -6,3 +6,9 @@
 
 # Usage
 [https://godweiyang.com/2018/04/13/hexo-blog/](https://godweiyang.com/2018/04/13/hexo-blog/)
+
+# 日常操作：
+npm i hexo-cli -g
+hexo clean
+hexo g
+hexo d

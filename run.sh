@@ -1,3 +1,5 @@
+npm i hexo-cli -g
+hexo clean
 hexo g
 hexo d
 git add .
