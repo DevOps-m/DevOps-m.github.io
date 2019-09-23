@@ -460,7 +460,7 @@ PS：这里不介绍部署NFS网络共享文件系统内容。
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    417
+                    374
                 </div>
                 
 
@@ -505,21 +505,32 @@ PS：这里不介绍部署NFS网络共享文件系统内容。
 </blockquote>
 <ol>
 <li><p>安装autofs软件：</p>
-<pre><code>yum install -y autofs</code></pre></li>
-<li><p>向/etc/auto.master内增加内容：<br>```<br>root@xxx:~# tail /etc/auto.master</p>
-<h1 id="Include-central-master-map-if-it-can-be-found-using"><a href="#Include-central-master-map-if-it-can-be-found-using" class="headerlink" title="Include central master map if it can be found using"></a>Include central master map if it can be found using</h1><h1 id="nsswitch-sources"><a href="#nsswitch-sources" class="headerlink" title="nsswitch sources."></a>nsswitch sources.</h1><p>#</p>
-<h1 id="Note-that-if-there-are-entries-for-net-or-misc-as"><a href="#Note-that-if-there-are-entries-for-net-or-misc-as" class="headerlink" title="Note that if there are entries for /net or /misc (as"></a>Note that if there are entries for /net or /misc (as</h1><h1 id="above-in-the-included-master-map-any-keys-that-are-the"><a href="#above-in-the-included-master-map-any-keys-that-are-the" class="headerlink" title="above) in the included master map any keys that are the"></a>above) in the included master map any keys that are the</h1><h1 id="same-will-not-be-seen-as-the-first-read-key-seen-takes"><a href="#same-will-not-be-seen-as-the-first-read-key-seen-takes" class="headerlink" title="same will not be seen as the first read key seen takes"></a>same will not be seen as the first read key seen takes</h1><h1 id="precedence"><a href="#precedence" class="headerlink" title="precedence."></a>precedence.</h1><p>#</p>
-</li>
+<pre><code>root@linux:~# yum install -y autofs</code></pre></li>
+<li><p>向/etc/auto.master内增加内容：</p>
+<pre><code>root@linux:~# echo &quot;/ /etc/auto.fs&quot; &gt;&gt; /etc/auto.master</code></pre></li>
+<li><p>创建/etc/auto.fs，如存在则直接添加以下内容即可：</p>
+<pre><code>mnt -fstype=nfs,vers=4,minorversion=0,noatime,nodiratime,nosuid,noexec,nodev,ro,bg,soft,_netdev nfs.linux.com:/data/renderdata</code></pre></li>
+<li><p>将autofs服务设置开机自启并启动：</p>
+<pre><code>root@linux:~# systemctl enable autofs.service
+root@linux:~# systemctl start autofs.service
+root@linux:~# systemctl status autofs.service</code></pre></li>
+<li><p>测试autofs部署情况：</p>
+<pre><code>ops@linux:~$ df -h
+Filesystem             Size  Used Avail Use% Mounted on
+/dev/mapper/vg01-root  200G  4.0G  196G   2% /
+devtmpfs                63G     0   63G   0% /dev
+tmpfs                   63G     0   63G   0% /dev/shm
+tmpfs                   63G   11M   63G   1% /run
+tmpfs                   63G     0   63G   0% /sys/fs/cgroup
+/dev/sda2              497M  132M  365M  27% /boot
+/dev/sda1              500M   12M  489M   3% /boot/efi
+/dev/mapper/vg01-data  3.1T   38M  3.1T   1% /data
+tmpfs                   13G     0   13G   0% /run/user/1000
+ops@linux:~$
+</code></pre></li>
 </ol>
-<p>+auto.master<br>/ /etc/auto.fs     // 此行为增加内容;<br>root@xxx:~# </p>
-<pre><code>
-3. 创建/etc/auto.fs，如存在则直接添加以下内容即可：</code></pre><p>mnt -fstype=nfs,vers=4,minorversion=0,noatime,nodiratime,nosuid,noexec,nodev,ro,bg,soft,_netdev nfs.xxx.com:/data/renderdata</p>
-<pre><code>
-4. 将autofs服务设置开机自启并启动：</code></pre><p>root@xxx:<del># systemctl enable autofs.service<br>root@xxx:</del># systemctl start autofs.service<br>root@xxx:~# systemctl status autofs.service</p>
-<pre><code>
-5. 测试autofs部署情况：</code></pre><p>ops@xxx:<del>$ df -h<br>Filesystem             Size  Used Avail Use% Mounted on<br>/dev/mapper/vg01-root  200G  4.0G  196G   2% /<br>devtmpfs                63G     0   63G   0% /dev<br>tmpfs                   63G     0   63G   0% /dev/shm<br>tmpfs                   63G   11M   63G   1% /run<br>tmpfs                   63G     0   63G   0% /sys/fs/cgroup<br>/dev/sda2              497M  132M  365M  27% /boot<br>/dev/sda1              500M   12M  489M   3% /boot/efi<br>/dev/mapper/vg01-data  3.1T   38M  3.1T   1% /data<br>tmpfs                   13G     0   13G   0% /run/user/1000<br>ops@xxx:</del>$</p>
-<p>ops@xxx:<del>$ ls /mnt/<br>exportgeometry  modelvrscene  renderingvrscene  scripts<br>ops@xxx:</del>$ </p>
-<p>ops@xxx:<del>$ df -h<br>Filesystem                          Size  Used Avail Use% Mounted on<br>/dev/mapper/vg01-root               200G  4.0G  196G   2% /<br>devtmpfs                             63G     0   63G   0% /dev<br>tmpfs                                63G     0   63G   0% /dev/shm<br>tmpfs                                63G   11M   63G   1% /run<br>tmpfs                                63G     0   63G   0% /sys/fs/cgroup<br>nfs.xxx.com:/data/renderdata        4.0T  1.2T  2.9T  29% /mnt<br>/dev/sda2                           497M  132M  365M  27% /boot<br>/dev/sda1                           500M   12M  489M   3% /boot/efi<br>/dev/mapper/vg01-data               3.1T   38M  3.1T   1% /data<br>tmpfs                                13G     0   13G   0% /run/user/1000<br>ops@xxx:</del>$<br>```</p>
+<p>ops@linux:<del>$ ls /mnt/<br>exportgeometry  modelvrscene  renderingvrscene  scripts<br>ops@linux:</del>$ </p>
+<p>ops@linux:<del>$ df -h<br>Filesystem                          Size  Used Avail Use% Mounted on<br>/dev/mapper/vg01-root               200G  4.0G  196G   2% /<br>devtmpfs                             63G     0   63G   0% /dev<br>tmpfs                                63G     0   63G   0% /dev/shm<br>tmpfs                                63G   11M   63G   1% /run<br>tmpfs                                63G     0   63G   0% /sys/fs/cgroup<br>nfs.linux.com:/data/renderdata        4.0T  1.2T  2.9T  29% /mnt<br>/dev/sda2                           497M  132M  365M  27% /boot<br>/dev/sda1                           500M   12M  489M   3% /boot/efi<br>/dev/mapper/vg01-data               3.1T   38M  3.1T   1% /data<br>tmpfs                                13G     0   13G   0% /run/user/1000<br>ops@linux:</del>$<br>```</p>
 <blockquote>
 <p>PS：可以看到测试过程如上所示。</p>
 </blockquote>
@@ -877,7 +888,7 @@ PS：这里不介绍部署NFS网络共享文件系统内容。
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">417</span>
+            <span class="white-color">374</span>
             
 
             <br>
