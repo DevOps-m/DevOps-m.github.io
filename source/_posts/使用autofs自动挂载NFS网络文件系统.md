@@ -61,11 +61,15 @@ tmpfs                   63G     0   63G   0% /sys/fs/cgroup
 /dev/mapper/vg01-data  3.1T   38M  3.1T   1% /data
 tmpfs                   13G     0   13G   0% /run/user/1000
 ops@linux:~$
+```
 
+```
 ops@linux:~$ ls /mnt/
 exportgeometry  modelvrscene  renderingvrscene  scripts
 ops@linux:~$ 
+```
 
+```
 ops@linux:~$ df -h
 Filesystem                          Size  Used Avail Use% Mounted on
 /dev/mapper/vg01-root               200G  4.0G  196G   2% /
